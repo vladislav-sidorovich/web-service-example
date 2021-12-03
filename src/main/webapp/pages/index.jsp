@@ -25,7 +25,7 @@
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
     <div class="container">
-        <h1 class="mt-5">It's simple Java Web service.</h1>
+        <h1 class="mt-5">It's simple <i>${appName}</i>.</h1>
         <p class="lead">This page was enriched with: <strong class="d-inline-block mb-2 text-success">${controllerVariable}</strong></p>
         <div class="col-md-6">
             <p>You also can try:</p>
