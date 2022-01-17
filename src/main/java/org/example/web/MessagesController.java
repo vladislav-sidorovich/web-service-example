@@ -3,6 +3,8 @@ package org.example.web;
 import org.example.entity.Message;
 import org.example.services.MessagesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,19 +18,10 @@ public class MessagesController {
     private MessagesService messagesService;
 
     @GetMapping("/messages")
-    public String messages() {
+    public Object messages() {
         List<Message> messages = messagesService.allMessages();
-        StringBuilder responseBody = new StringBuilder();
-        for (Message message : messages) {
-            responseBody
-                    .append("[")
-                    .append("messageText: '").append(message.getText()).append("'")
-                    .append(", ")
-                    .append("messageDate: '" ).append(message.getCreationDate()).append("'")
-                    .append("]");
-        }
 
-        return responseBody.toString();
+        return new ResponseEntity(messages, HttpStatus.OK);
     }
 
     @PostMapping("/messages")
